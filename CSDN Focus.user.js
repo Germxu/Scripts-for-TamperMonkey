@@ -2,7 +2,7 @@
 // @name         CSDN Focus
 // @namespace    http://tampermonkey.net/
 // @version      0.2
-// @description  CSS加载, 页面不在再重绘
+// @description  CSS加载, 页面不再重绘
 // @description  只显示页面文章和评论, 其他全部隐藏
 // @author       Finn
 // @match       blog.csdn.net/*/article/*
