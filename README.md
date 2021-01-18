@@ -8,7 +8,7 @@
 
 | 脚本       |                        地址                         |                              地址                              |
 | :--------- | :-------------------------------------------------: | :------------------------------------------------------------: |
-| CSDN Focus | [greasyfork](https://greasyfork.org/zh-CN/scripts/) | [openuserjs](https://openuserjs.org/scripts/Germxu/CSDN_Focus) |
+| CSDN Focus | [greasyfork](https://greasyfork.org/zh-CN/scripts/420352-csdn-focus) | [openuserjs](https://openuserjs.org/scripts/Germxu/CSDN_Focus) |
 
 
 ## CSDN Focus
