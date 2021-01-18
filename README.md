@@ -6,9 +6,9 @@
 
 ## 下载与安装
 
-| 脚本       |     |     |     |                        地址                         |
-| :--------- | --- | --- | --- | :-------------------------------------------------: |
-| CSDN Focus |     |     |     | [greasyfork](https://greasyfork.org/zh-CN/scripts/) |
+| 脚本       |                        地址                         |                              地址                              |
+| :--------- | :-------------------------------------------------: | :------------------------------------------------------------: |
+| CSDN Focus | [greasyfork](https://greasyfork.org/zh-CN/scripts/) | [openuserjs](https://openuserjs.org/scripts/Germxu/CSDN_Focus) |
 
 
 ## CSDN Focus
