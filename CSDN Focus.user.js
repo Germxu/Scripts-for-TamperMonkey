@@ -2,22 +2,28 @@
 // @name         CSDN Focus
 // @namespace    https://github.com/Germxu
 // @version      0.5
-// @description  💡: 页面不重绘不闪屏! CSDN无登录弹窗无广告骚扰无推荐阅读! 纯CSS注入, 自动展开CSDN文章和全部评论,页面不重绘! 其他全部隐藏,只在CSDN文章页运行,沉浸式体验|受够了脚本注入导致的闪屏重绘页面吗, 试试不一样的感觉吧 😁
-// @description:en   CSDN cleaner with css. If it help, star on github will be excellent 😄
+// @description  💡: 页面不重绘不闪屏! CSDN无登录弹窗无广告骚扰无推荐阅读! 纯CSS注入, 自动展开CSDN文章和全部评论,页面不重绘! 保留搜索栏, 其他全部隐藏,只在CSDN文章页运行,沉浸式体验|受够了脚本注入导致的闪屏重绘页面吗, 试试不一样的感觉吧 😁
 // @author       Finn
 // @homepage     https://github.com/Germxu/Scripts-for-TamperMonkey
+// @updateURL    https://greasyfork.org/zh-CN/scripts/420352-csdn-focus
 // @supportURL   https://github.com/Germxu/Scripts-for-TamperMonkey/issues/new
 // @run-at       document-start
 // @match        blog.csdn.net/*/article/details/*
 // @match        *.blog.csdn.net/article/details/*
 // @grant        GM_addStyle
 // @license      MIT
+// @note         V0.5 保留搜索栏, 并优化搜索栏动作
+// @note         v0.4 隐藏大屏幕下的右侧边栏
+// @note         v0.3 展开全部评论和翻页键, 展开需要关注阅读文章
+// @note         v0.2 JS重置样式改为纯CSS注入,页面不再重绘, 所见所得
+// @note         代码透明欢迎审查, 欢迎给项目 star 😄
 // ==/UserScript==
 
 (function () {
     /*
      页面重新加载太不爽了, 我不喜欢, 希望您也一样, 如有增强功能需求, 请提交issue, 顺便点个赞👍, 如果呼声强烈, 我会考虑制作js版本😄
-     后续本脚本会考虑支持其他网站净化, 但也是使用CSS, 避免js加载导致的页面重绘
+     后续此脚本会考虑支持其他网站净化, 但也是使用CSS, 避免js加载导致的页面重绘
+     
      隐藏头部, 底部, 登录窗口, 左侧信息, 页面广告, 推荐阅读, 页面提示等等
      展开全部文章, 展开评论, 显示评论切换翻页按钮
      只删减, 不添加其他内容
