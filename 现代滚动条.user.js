@@ -1,11 +1,13 @@
 // ==UserScript==
-// @name:cn        现代滚动条
 // @name:en        Nice ScrollBar
+// @name:zh        现代滚动条
+// @name:zh-CN     现代滚动条
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  try to take over the world!
 // @author       You
-// @match        *://*
+// @include        *
+// @run-at        document-start
 // @grant        GM_addStyle
 // ==/UserScript==
 
