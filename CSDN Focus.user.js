@@ -28,7 +28,7 @@
                        #blogColumnPayAdvert, .csdn-side-toolbar, aside, #dmp_ad_58,
                        .recommend-box, .login-mark, .blog-footer-bottom, .template-box,.leftPop,
                        #toolBarBox, .comment-edit-box.d-flex, #passportbox, .opt-box.text-center,
-                       .hide-article-box.hide-article-pos.text-center, #rightAside
+                       .hide-article-box.hide-article-pos.text-center, #rightAside, .hljs-button.signin
                         {display:none!important; color: transparent; visible:hidden}
                         .toolbar-search.onlySearch{transition:all 0.3s ease;}
                        body #csdn-toolbar{box-shadow: 0 2px 10px 0 rgba(0,0,0,.15);position:fixed !important;top: 0px;left: 0px;width: 100%;z-index: 1993;}
