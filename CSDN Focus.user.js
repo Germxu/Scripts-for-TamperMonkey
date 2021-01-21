@@ -2,7 +2,7 @@
 // @name         CSDN Focus
 // @namespace    https://github.com/Germxu
 // @version      0.6
-// @description  💡: 页面不重绘不闪屏! CSDN无弹窗无广告无推荐阅读,外链一键直达! CSS注入展开CSDN文章和全部评论,页面不重绘! 保留搜索栏,|受够了脚本注入导致的闪屏重绘页面吗, 试试不一样的感觉吧 😁
+// @description  💡: 页面不重绘不闪屏! CSDN无弹窗无广告无推荐阅读, 保留搜索栏, 外链一键直达! CSS修改样式,JS负责功能,高效简洁 |受够了脚本注入导致的闪屏重绘页面吗, 试试不一样的感觉吧 😁
 // @author       Finn
 // @homepage     https://github.com/Germxu/Scripts-for-TamperMonkey
 // @supportURL   https://github.com/Germxu/Scripts-for-TamperMonkey/issues/new
