@@ -13,14 +13,11 @@
 
 ## CSDN Focus
 
-![头部](images/design_2.png) 
 
-![评论](images/comment.png)
-
-完全 CSS 修改页面, 使用 `GM_addStyle` API, 不涉及 js 功能, 脚本在页面 `document_start` 注入, 这样页面初始化就是修改后的样式, 避免页面重新渲染的尴尬效果, 也因此没有也不会有更多增强功能
+使用 `GM_addStyle` 在 `document_start` 注入重置样式, 页面初始化就是修改后的样式, 避免页面重新渲染的尴尬效果
 
 #### v 0.6
-功能优化: 添加外联直达, 干掉跳转提醒
+功能优化: 添加外链直达, 干掉跳转提醒
 
 #### v 0.5
 功能优化: 显示顶部搜索栏,优化过渡显示
@@ -28,6 +25,9 @@
 #### v 0.4
 Bugfix: 大屏幕右侧边栏隐藏, 大小屏幕都居中显示
 
+
+<details>
+<summary>more</summary>
 #### v 0.3
 展开全部评论和评论翻页, 隐藏登录窗
 
@@ -39,16 +39,16 @@ Bugfix: 大屏幕右侧边栏隐藏, 大小屏幕都居中显示
 
 只显示页面文章和评论, 其他全部隐藏
 
+**截图**
+![头部](images/design_2.png) 
+
+![评论](images/comment.png)
+
+</details>
+
+
 &emsp;  
 &emsp;  
-&emsp;  
-&emsp;  
-&emsp;  
-&emsp;  
-&emsp;  
-&emsp;  
-&emsp;  
-&emsp;
 
 ## 后话:
 
