@@ -28,6 +28,7 @@ Bugfix: 大屏幕右侧边栏隐藏, 大小屏幕都居中显示
 
 <details>
 <summary>more</summary>
+
 #### v 0.3
 展开全部评论和评论翻页, 隐藏登录窗
 
