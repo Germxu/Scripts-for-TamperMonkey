@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         CSDN Focus
-// @namespace    https://github.com/Germxu
-// @version      0.6
-// @description  💡: 页面不重绘不闪屏! CSDN无弹窗无广告无推荐阅读, 保留搜索栏, 外链一键直达! CSS修改样式,JS负责功能,高效简洁 |受够了脚本注入导致的闪屏重绘页面吗, 试试不一样的感觉吧 😁
+// @description  💡: 页面不重绘不闪屏! CSDN无弹窗无广告无推荐阅读, 展开文章和评论, 保留搜索栏, 外链直达! |受够了脚本注入导致的闪屏重绘页面吗, 试试不一样的感觉吧 😁
+// @version      0.7
 // @author       Finn
+// @namespace    https://github.com/Germxu
 // @homepage     https://github.com/Germxu/Scripts-for-TamperMonkey
 // @supportURL   https://github.com/Germxu/Scripts-for-TamperMonkey/issues/new
 // @run-at       document-start
@@ -11,16 +11,15 @@
 // @match        *.blog.csdn.net/article/details/*
 // @grant        GM_addStyle
 // @license      MIT
+// @note         V0.7 操作优化
 // @note         V0.6 添加外联直达, 去他妈的跳转提醒
 // @note         V0.5 保留搜索栏, 并优化搜索栏动作
 // @note         v0.4 隐藏大屏幕下的右侧边栏
 // @note         v0.3 展开全部评论和翻页键, 展开需要关注阅读文章
 // @note         v0.2 JS重置样式改为纯CSS注入,页面不再重绘, 所见所得
-// @note         代码透明欢迎审查, 欢迎给项目 star 😄
 // ==/UserScript==
 
 (function () {
-
     'use strict';
     const hideChaos = `
                        #csdn-toolbar .toolbar-advert,#csdn-toolbar .toolbar-container-left,#csdn-toolbar .toolbar-container-right,
@@ -46,15 +45,15 @@
                       `;
     GM_addStyle(hideChaos);
 
-    //外链一键直达
+    //外链直达, 新页面打开
     window.addEventListener("DOMContentLoaded", function () {
         document.body.addEventListener('click', function (e) {
             let ev = e.target;
             if (ev.nodeName.toLocaleLowerCase() === 'a') {
                 if (ev.host.indexOf("csdn") === -1) {
                     e.stopImmediatePropagation();
+                    window.open(ev.href);
                     e.preventDefault();
-                    window.open(ev.getAttribute("href"));
                 }
             }
         }, true);

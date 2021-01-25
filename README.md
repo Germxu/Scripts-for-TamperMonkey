@@ -16,18 +16,20 @@
 
 使用 `GM_addStyle` 在 `document_start` 注入重置样式, 页面初始化就是修改后的样式, 避免页面重新渲染的尴尬效果
 
+#### v 0.7
+功能优化: 跳转优化
+
 #### v 0.6
 功能优化: 添加外链直达, 干掉跳转提醒
 
 #### v 0.5
 功能优化: 显示顶部搜索栏,优化过渡显示
 
+<details>
+<summary><strong>more</strong></summary>
+
 #### v 0.4
 Bugfix: 大屏幕右侧边栏隐藏, 大小屏幕都居中显示
-
-
-<details>
-<summary>more</summary>
 
 #### v 0.3
 展开全部评论和评论翻页, 隐藏登录窗
