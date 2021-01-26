@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         360 tableIns
-// @version      0.3
 // @description  360流量平台 CPC数据, 显示广告ID和昵称
+// @version      0.5
 // @author       Finn
-// @namespace    https://github.com/Germxu
+// @namespace    http://tampermonkey.net/
 // @match        https://ssp.360.cn/webmaster/adspace
 // @run-at       document-end
 // @grant        GM_xmlhttpRequest
@@ -30,10 +30,9 @@
     let trs = table.querySelectorAll("tr");
     table.querySelector("colgroup").remove();//delete colgroup
 
-    const cpcth = `<th class="Finn">CPC</th>`;
-    const nickth = `<th class="Finn">昵称</th><th class="Finn">Showid</th>`;
-    trs[0].childNodes[10].insertAdjacentHTML("beforebegin", cpcth);
-    trs[0].childNodes[0].insertAdjacentHTML("afterend", nickth);
+    const cpcth_nickth = `<th class="Finn">CPC</th><th class="Finn">昵称</th><th class="Finn">Showid</th>`;
+    trs[0].childNodes[10].insertAdjacentHTML("beforebegin", cpcth_nickth);
+   // trs[0].childNodes[10].insertAdjacentHTML("afterend", nickth);
 
     function render() {
         let trs = table.querySelectorAll("tr");
@@ -54,7 +53,7 @@
                 }
             }
 
-            let val = (a.slice(1).replace(",", "") / (b.replace(",", ""))).toFixed(2);
+            let val = (a.slice(1).replace(",", "") / (b.replace(",", ""))).toFixed(3);
             val = isNaN(val) ? "- " : "¥ " + val;
             /* const vtd = document.createElement("TD");
              const textNode = document.createTextNode(val);
@@ -63,13 +62,10 @@
              vtd.appendChild(textNode);
              trs[i].insertBefore(vtd, trs[i].childNodes[10]);*/
 
-            const cpctd = `<td class="perIncomes">${val}</td>`;
-            trs[i].childNodes[10].insertAdjacentHTML("beforebegin", cpctd);
-
             //昵称与showid
-            const nickDom = `<td title="${d && d.nick || ''}">${d && d.nick || '-'}</td>
-                             <td title="${d && d.showid || ''}">${d && d.showid || '-'}</td>`;
-            trs[i].childNodes[0].insertAdjacentHTML("afterend", nickDom);
+            const cpctd = `<td class="perIncomes">${val}</td><td title="${d && d.nick || ''}">${d && d.nick || '-'}</td><td title="${d && d.showid || ''}">${d && d.showid || '-'}</td>`;
+            trs[i].childNodes[10].insertAdjacentHTML("beforebegin", cpctd);
+            //trs[i].childNodes[10].insertAdjacentHTML("afterend", nickDom);
         }
     }
 
