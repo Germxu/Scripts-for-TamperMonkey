@@ -17,8 +17,6 @@
     //console.log($().jquery)
     var set = localStorage.getItem("bilibili_player_settings");
     console.log("数据查看",set)
-    console.log("数据查看2",set)
-
     //get Button
     const player = document.querySelector("#playerWrap");
 
