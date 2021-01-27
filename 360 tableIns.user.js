@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         360 tableIns
 // @description  360流量平台 CPC数据, 显示广告ID和昵称
-// @version      0.5
+// @version      0.6
 // @author       Finn
 // @namespace    http://tampermonkey.net/
 // @match        https://ssp.360.cn/webmaster/adspace
@@ -16,8 +16,6 @@
 
     const initStyle = `#wrap{min-width:1280px!important;}
                         .Finn{color:red!important;width:6%}
-                        .mvgrid table th:nth-child(1){width:8%}
-                        .mvgrid table th:nth-child(7){width:6%}
                         .mvgrid table tr:hover {background-color: #81d4fa;!important}
                         .mvgrid table tr th:nth-child(n+2),.mvgrid table tr td:nth-child(n+2)
                         {text-align:center!important}`;
@@ -30,9 +28,8 @@
     let trs = table.querySelectorAll("tr");
     table.querySelector("colgroup").remove();//delete colgroup
 
-    const cpcth_nickth = `<th class="Finn">CPC</th><th class="Finn">昵称</th><th class="Finn">Showid</th>`;
+    const cpcth_nickth = `<th class="Finn">CPC</th><th class="Finn">广告位</th><th class="Finn">Showid</th>`;
     trs[0].childNodes[10].insertAdjacentHTML("beforebegin", cpcth_nickth);
-   // trs[0].childNodes[10].insertAdjacentHTML("afterend", nickth);
 
     function render() {
         let trs = table.querySelectorAll("tr");
@@ -55,17 +52,9 @@
 
             let val = (a.slice(1).replace(",", "") / (b.replace(",", ""))).toFixed(3);
             val = isNaN(val) ? "- " : "¥ " + val;
-            /* const vtd = document.createElement("TD");
-             const textNode = document.createTextNode(val);
-             vtd.setAttribute("style", "text-align:right");
-             vtd.setAttribute("class", "perIncomes");
-             vtd.appendChild(textNode);
-             trs[i].insertBefore(vtd, trs[i].childNodes[10]);*/
-
             //昵称与showid
             const cpctd = `<td class="perIncomes">${val}</td><td title="${d && d.nick || ''}">${d && d.nick || '-'}</td><td title="${d && d.showid || ''}">${d && d.showid || '-'}</td>`;
             trs[i].childNodes[10].insertAdjacentHTML("beforebegin", cpctd);
-            //trs[i].childNodes[10].insertAdjacentHTML("afterend", nickDom);
         }
     }
 
@@ -105,3 +94,15 @@
     }
 
 })();
+
+/*
+*
+    var insertedNode = parentNode.insertBefore(newNode, referenceNode);
+    insertedNode 被插入节点(newNode)
+    parentNode 新插入节点的父节点
+    newNode 用于插入的节点
+    referenceNode newNode 将要插在这个节点之前
+    如果 referenceNode 为 null 则 newNode 将被插入到子节点的末尾。
+    ⚠️ referenceNode 引用节点不是可选参数——你必须显式传入一个 Node 或者 null。
+*
+*/
