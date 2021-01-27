@@ -19,7 +19,7 @@
             display: block;
             margin: 50px;
             border: none;
-            
+
         }
 
         img {
@@ -82,7 +82,15 @@
 
     const captureBtn = document.getElementById("capture");
     let canCapture = true;
-    captureBtn.addEventListener("click", function () {
+    captureBtn.addEventListener("click", captureVideo());
+    document.onkeydown = onKeyDown;
+    function onKeyDown() {
+        if (window.event.altKey)
+            console.log('快捷键Alt+k');
+        //添加要执行的代码  
+        //event.returnValue=false;   如果满足条件的话，就屏蔽按钮操作 
+    }
+    function captureVideo() {
         if (canCapture) {
             videoCapture();
             canCapture = !canCapture;
@@ -90,7 +98,7 @@
             console.log('防呆');
             return;
         }
-    })
+    }
 
     function videoCapture() {
         //视频截图
@@ -192,12 +200,12 @@
     }
 
     // 箭头函数
-    var A={};
-    A.arrow=function(e){
-        console.log(e,this);
-       return (e)=>{console.log("箭头函数",e,this)}
+    var A = {};
+    A.arrow = function (e) {
+        console.log(e, this);
+        return (e) => { console.log("箭头函数", e, this) }
     }
-console.log(A.arrow(2)(3));
+    console.log(A.arrow(2)(3));
 
     /**
      * 截图技术要点
@@ -217,6 +225,14 @@ console.log(A.arrow(2)(3));
      * appendChild：在父级元素内追加新元素。
      * insertBefore：在父级元素内的某个元素之前插入新元素。
      * 元素动画过程中对css重置初始化会导致尺寸突变, 不能平滑过渡, 需要对实时变化的尺寸计算赋值;例如img删除一个尺寸值, 计算的默认值不会在动画中平滑过渡
-     *
+     *    var insertedNode = parentNode.insertBefore(newNode, referenceNode);
+     * 
+     * textContent 也要看
+    insertedNode 被插入节点(newNode)
+    parentNode 新插入节点的父节点
+    newNode 用于插入的节点
+    referenceNode newNode 将要插在这个节点之前
+    如果 referenceNode 为 null 则 newNode 将被插入到子节点的末尾。
+    ⚠️ referenceNode 引用节点不是可选参数——你必须显式传入一个 Node 或者 null。
     */
 </script>
