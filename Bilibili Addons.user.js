@@ -13,7 +13,7 @@
 
     'use strict';
     var set = localStorage.getItem("bilibili_player_settings");
-    console.log("数据查看", set)
+    console.log("数据查看", set);
 
     const initStyle = `<style id="FinnStyle">
                         /*全屏控制区域*/
@@ -24,9 +24,9 @@
                         opacity:0;cursor:se-resize;opacity:0;}
                         #finnDrag:hover{opacity:1}
                         /*添加进度条*/
-                        #finnProgress{position:absolute;left:50px;top:50px;z-index:1000;
+                        #finnProgress{--rule:10%; position:absolute;left:50px;top:50px;z-index:1000;
                         background:conic-gradient(transparent 100%,#cccccc57 0%);
-                        width:80px;height:80px;border-radius:50%;
+                        width:calc(var(--rule)); height:calc(var(--rule));border-radius:50%;
                         text-align:center;color:#eeeeeea8;font-size:15px;line-height:100px;
                         box-shadow:0 0 20px #bfbfbf21;}</style>
                       `;
@@ -34,14 +34,18 @@
 
     window.addEventListener("DOMContentLoaded", function () {
 
-
         //get Button
         const player = document.querySelector("#playerWrap");
 
+
+
         let observer = new MutationObserver(function (mutations) {
-            //console.log("mutations",mutations);
+            console.log("mutations", mutations);
             //let btn = player.querySelector(".bilibili-player-iconfont-fullscreen-off");//全屏按钮🔘
             let btn = player.querySelector(".bilibili-player-iconfont-web-fullscreen-off");//网页全屏按钮🔘
+            const fullwrap = document.querySelector("#bilibiliPlayer");
+            const totalTime = document.querySelector(".bilibili-player-video-time-total");
+            console.log(totalTime);
 
             if (btn) {
                 btn.setAttribute("id", "finnFor");
@@ -53,26 +57,24 @@
             /*let tabhidden = document.hidden;
             // if (!tabhidden) {
                 let playarea = document.querySelector("#playerWrap video");//点击播放区域
-                // playarea.click();
-                setTimeout(function () {
-                    var e = document.createEvent("MouseEvents");
-                    e.initEvent("click", true, true);
-                    playarea.dispatchEvent(e);
-                }, 1000)*/
+                // playarea.click();*/
+            setTimeout(function () {
+                /* var e = document.createEvent("MouseEvents");
+                e.initEvent("click", true, true);
+                playarea.dispatchEvent(e); */
 
-            //添加全屏按钮
-            var fullwrap = document.querySelector("#bilibiliPlayer");
+                //添加全屏按钮
 
-            const fullBtn = `<label for="finnFor" id="finnDrag"></label>`
-            //fullBtn.addEventListener("click", function (e) { console.log("fullBtn click 点击"), e.stopPropagation() })
-            fullwrap.insertAdjacentHTML("afterbegin", fullBtn);
+                const fullBtn = `<label for="finnFor" id="finnDrag"></label>`
+                //fullBtn.addEventListener("click", function (e) { console.log("fullBtn click 点击"), e.stopPropagation() })
+                fullwrap.insertAdjacentHTML("afterbegin", fullBtn);
 
-            //添加进度条
-            let totalTime = document.querySelector(".bilibili-player-video-time-total").textContent;
-            let progress = `<div id="finnProgress">${totalTime}</div>`;
-            fullwrap.insertAdjacentHTML("afterbegin", progress);
-            //进度条
-            progressBar();
+                //添加进度条
+                let progress = `<div id="finnProgress">${totalTime.textContent}</div>`;
+                fullwrap.insertAdjacentHTML("afterbegin", progress);
+                //进度条
+                progressBar();
+            }, 500)
         })
         let obConfig = {
             childList: true,
