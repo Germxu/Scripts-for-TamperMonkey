@@ -42,7 +42,7 @@
             const c = trs[i].querySelectorAll("td")[0].textContent;
             let d;
 
-            for (const t of userData) {
+            for (const t of userData) {//match id
                 if (c == t.adv_name) {
                     //console.log(t);
                     d = t;
