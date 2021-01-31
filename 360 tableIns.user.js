@@ -46,7 +46,7 @@
             const c = trs[i].querySelectorAll("td")[0].textContent;
             let d;
 
-            for (const t of userData) {
+            for (const t of userData) {//match id
                 if (c == t.adv_name) {
                     //console.log(t);
                     d = t;
@@ -56,13 +56,6 @@
 
             let val = (a.slice(1).replace(",", "") / (b.replace(",", ""))).toFixed(2);
             val = isNaN(val) ? "- " : "¥ " + val;
-            /* const vtd = document.createElement("TD");
-             const textNode = document.createTextNode(val);
-             vtd.setAttribute("style", "text-align:right");
-             vtd.setAttribute("class", "perIncomes");
-             vtd.appendChild(textNode);
-             trs[i].insertBefore(vtd, trs[i].childNodes[10]);*/
-
             const cpctd = `<td class="perIncomes">${val}</td>`;
             trs[i].childNodes[10].insertAdjacentHTML("beforebegin", cpctd);
 
