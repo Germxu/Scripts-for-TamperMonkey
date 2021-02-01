@@ -13,7 +13,7 @@
 
     'use strict';
     var set = localStorage.getItem("bilibili_player_settings");
-    console.log("数据查看", set);
+    console.log("数据查看", set)
 
     const initStyle = `<style id="FinnStyle">
                         /*全屏控制区域*/
@@ -24,9 +24,9 @@
                         opacity:0;cursor:se-resize;opacity:0;}
                         #finnDrag:hover{opacity:1}
                         /*添加进度条*/
-                        #finnProgress{--rule:10%; position:absolute;left:50px;top:50px;z-index:1000;
+                        #finnProgress{--rule: 1.7vmax; position:absolute;left:var(--rule);top:var(--rule);z-index:1000;
                         background:conic-gradient(transparent 100%,#cccccc57 0%);
-                        width:calc(var(--rule)); height:calc(var(--rule));border-radius:50%;
+                        width:calc(var(--rule) + 3%); height:0;padding-bottom:calc(var(--rule) + 3%); border-radius:50%;
                         text-align:center;color:#eeeeeea8;font-size:15px;line-height:100px;
                         box-shadow:0 0 20px #bfbfbf21;}</style>
                       `;
