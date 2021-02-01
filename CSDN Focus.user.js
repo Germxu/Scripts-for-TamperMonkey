@@ -1,64 +1,104 @@
 // ==UserScript==
-// @name         CSDN Focus
-// @description  💡: 页面不重绘不闪屏! CSDN无弹窗无广告无推荐阅读, 展开文章和评论, 保留搜索栏, 外链直达! | 受够了脚本注入导致的闪屏重绘页面吗, 试试不一样的感觉吧 😁
-// @version      0.8
+// @name         Bilibili FullScreen Progressbar
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  B站 活动标签页自动播放, 更大全屏按钮, 视频进度条等增强功能
 // @author       Finn
-// @namespace    https://github.com/Germxu
-// @homepage     https://github.com/Germxu/Scripts-for-TamperMonkey
-// @supportURL   https://github.com/Germxu/Scripts-for-TamperMonkey/issues/new
-// @run-at       document-start
-// @match        blog.csdn.net/*/article/details/*
-// @match        *.blog.csdn.net/article/details/*
+// @match        https://www.bilibili.com/video/*
 // @grant        none
 // @license      MIT
-// @note         V0.8 使用原生API, 放弃GM_***
-// @note         V0.7 操作优化
-// @note         V0.6 添加外联直达, 去他妈的跳转提醒
-// @note         V0.5 保留搜索栏, 并优化搜索栏动作
-// @note         v0.4 隐藏大屏幕下的右侧边栏
-// @note         v0.3 展开全部评论和翻页键, 展开需要关注阅读文章
-// @note         v0.2 JS重置样式改为纯CSS注入,页面不再重绘, 所见所得
 // ==/UserScript==
 
 (function () {
+
     'use strict';
-    const hideChaos = `<style>
-                        #csdn-toolbar .toolbar-advert,#csdn-toolbar .toolbar-container-left,#csdn-toolbar .toolbar-container-right,
-                        .toolbar-search-drop-menu.toolbar-search-half, ::-webkit-input-placeholder, #placeholder
-                        #blogColumnPayAdvert, .csdn-side-toolbar, aside, #dmp_ad_58,
-                        .recommend-box, .login-mark, .blog-footer-bottom, .template-box,.leftPop,
-                        #toolBarBox, .comment-edit-box.d-flex, #passportbox, .opt-box.text-center,
-                        .hide-article-box.hide-article-pos.text-center, #rightAside, .hljs-button.signin
-                            {display:none!important; color: transparent; visible:hidden}
-                            .toolbar-search.onlySearch{transition:all 0.3s ease;}
-                        body #csdn-toolbar{box-shadow: 0 2px 10px 0 rgba(0,0,0,.15);position:fixed !important;top: 0px;left: 0px;width: 100%;z-index: 1993;}
-                            .toolbar-search.onlySearch:focus-within {max-width:1000px!important; width:1000px!important}
-                        .d-flex{display:block!important}
-                        .main_father{height: auto !important;}
-                        main{width:100%!important; box-shadow: 0 0 30px #959fa378; margin-bottom:0!important;}
-                        #mainBox{margin:50px auto; width:1000px!important}
-                        .comment-list-box{max-height:none!important}
-                        #commentPage, .toolbar-container-middle{display:block!important}
-                        #article_content{height:auto !important}
-                        .comment-list-container{padding: 4px 0!important}
-                        .article-header-box{padding-top: 18px !important}
-                        main .comment-box{padding: 0;box-shadow: 0 0 10px rgba(0,0,0,0.05);margin:8px 0;}
-                    </style>`;
+    var set = localStorage.getItem("bilibili_player_settings");
+    console.log("数据查看", set)
 
-    document.documentElement.insertAdjacentHTML('afterbegin', hideChaos);
+    const initStyle = `<style id="FinnStyle">
+                        /*全屏控制区域*/
+                        #finnDrag{position:absolute;left:50%;top:30%;
+                        margin-left:calc(-15%);z-index:1000;
+                        background:#ffffff5e;width:30%;height:30%;
+                        transition:all 0.2s;border:2px dotted gold;
+                        opacity:0;cursor:se-resize;opacity:0;}
+                        #finnDrag:hover{opacity:1}
+                        /*添加进度条*/
+                        #finnProgress{--rule:3vw; position:absolute;left:calc(var(--rule) / 2);top:calc(var(--rule) / 2);z-index:1000;
+                        background:conic-gradient(transparent 100%,#cccccc57 0%);
+                        width:calc(var(--rule)); height:calc(var(--rule));border-radius:50%;
+                        text-align:center;color:#eeeeeea8;font-size:15px;line-height:100px;
+                        box-shadow:0 0 20px #bfbfbf21;}</style>
+                      `;
+    document.documentElement.insertAdjacentHTML("afterbegin", initStyle);
 
-    //外链直达, 以新页面打开
     window.addEventListener("DOMContentLoaded", function () {
-        document.body.addEventListener('click', function (e) {
-            let ev = e.target;
-            if (ev.nodeName.toLocaleLowerCase() === 'a') {
-                if (ev.host.indexOf("csdn") === -1) {
-                    e.stopImmediatePropagation();
-                    window.open(ev.href);
-                    e.preventDefault();
-                }
+
+        //get Button
+        const player = document.querySelector("#playerWrap");
+
+
+
+        let observer = new MutationObserver(function (mutations) {
+            console.log("mutations", mutations);
+            //let btn = player.querySelector(".bilibili-player-iconfont-fullscreen-off");//全屏按钮🔘
+            let btn = player.querySelector(".bilibili-player-iconfont-web-fullscreen-off");//网页全屏按钮🔘
+            const fullwrap = document.querySelector("#bilibiliPlayer");
+            const totalTime = document.querySelector(".bilibili-player-video-time-total");
+            console.log(totalTime);
+
+            if (btn) {
+                btn.setAttribute("id", "finnFor");
+                //btn.click();//原生click()事件只支持有默认点击行为的元素;
+                observer.disconnect();
             }
-        }, true);
+
+            //如果当前标签页active, 自动播放
+            /*let tabhidden = document.hidden;
+            // if (!tabhidden) {
+                let playarea = document.querySelector("#playerWrap video");//点击播放区域
+                // playarea.click();*/
+            setTimeout(function () {
+                /* var e = document.createEvent("MouseEvents");
+                e.initEvent("click", true, true);
+                playarea.dispatchEvent(e); */
+
+                //添加全屏按钮
+
+                const fullBtn = `<label for="finnFor" id="finnDrag"></label>`
+                //fullBtn.addEventListener("click", function (e) { console.log("fullBtn click 点击"), e.stopPropagation() })
+                fullwrap.insertAdjacentHTML("afterbegin", fullBtn);
+
+                //添加进度条
+                let progress = `<div id="finnProgress">${totalTime.textContent}</div>`;
+                fullwrap.insertAdjacentHTML("afterbegin", progress);
+                //进度条
+                progressBar();
+            }, 500)
+        })
+        let obConfig = {
+            childList: true,
+            subtree: true
+        }
+        observer.observe(player, obConfig);
+
+        function progressBar() {
+            let bar = document.querySelector("#finnProgress");
+            console.log(bar)
+            let barStatus = setInterval(function () {
+                if (!bar) {
+                    console.log("不存在进度条")
+                } else {
+                    console.log("存在进度条");
+                    //progress.onmouseenter=function(){}
+                    let p = +document.querySelector(".bilibili-player-drag-mask-progress-tempo").style.transform.replace(/[^.0-9]/ig, "");//获取当前进度值
+                    bar.style.background = `conic-gradient(transparent ${p * 100}%,#ffffff47 0% )`;
+
+                    if (p == 1) { clearInterval(barStatus) };
+                }
+            }, 500);
+
+        }
     })
 
 })();
