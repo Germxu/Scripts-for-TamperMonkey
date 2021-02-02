@@ -29,10 +29,10 @@
                         .recommend-box, .login-mark, .blog-footer-bottom, .template-box,.leftPop,
                         #toolBarBox, .comment-edit-box.d-flex, #passportbox, .opt-box.text-center,
                         .hide-article-box.hide-article-pos.text-center, #rightAside, .hljs-button.signin
-                            {display:none!important; color: transparent; visible:hidden}
-                            .toolbar-search.onlySearch{transition:all 0.3s ease;}
+                        {display:none!important; color: transparent; visible:hidden}
+                        .toolbar-search.onlySearch{transition:all 0.3s ease;}
                         body #csdn-toolbar{box-shadow: 0 2px 10px 0 rgba(0,0,0,.15);position:fixed !important;top: 0px;left: 0px;width: 100%;z-index: 1993;}
-                            .toolbar-search.onlySearch:focus-within {max-width:1000px!important; width:1000px!important}
+                        .toolbar-search.onlySearch:focus-within {max-width:1000px!important; width:1000px!important}
                         .d-flex{display:block!important}
                         .main_father{height: auto !important;}
                         main{width:100%!important; box-shadow: 0 0 30px #959fa378; margin-bottom:0!important;}
