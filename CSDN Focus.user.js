@@ -6,6 +6,7 @@
 // @namespace    https://github.com/Germxu
 // @homepage     https://github.com/Germxu/Scripts-for-TamperMonkey
 // @supportURL   https://github.com/Germxu/Scripts-for-TamperMonkey/issues/new
+// @updateURL    https://github.com/Germxu/Scripts-for-TamperMonkey/raw/main/CSDN%20Focus.user.js
 // @run-at       document-start
 // @match        blog.csdn.net/*/article/details/*
 // @match        *.blog.csdn.net/article/details/*
