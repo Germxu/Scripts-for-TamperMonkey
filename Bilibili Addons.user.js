@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Bilibili FullScreen Progressbar
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.15
 // @description  B站 活动标签页自动播放, 更大全屏按钮, 视频进度条等增强功能
 // @author       Finn
 // @match        https://www.bilibili.com/video/*
