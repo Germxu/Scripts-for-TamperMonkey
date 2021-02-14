@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         360 tableIns
 // @description  360流量平台 CPC数据, 显示广告ID和昵称
-// @version      0.6
+// @version      0.7
 // @author       Finn
 // @namespace    http://tampermonkey.net/
 // @match        https://ssp.360.cn/webmaster/adspace
