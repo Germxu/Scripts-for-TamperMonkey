@@ -20,9 +20,9 @@
                         #finnDrag{position:absolute;left:50%;top:30%;
                         margin-left:calc(-15%);z-index:1000;
                         background:#ffffff5e;width:30%;height:30%;
-                        transition:all 0.2s;border:2px dotted gold;
-                        opacity:0;cursor:se-resize;opacity:0;}
+                        transition:all 0.2s;cursor:se-resize;opacity:1;}
                         #finnDrag:hover{opacity:1}
+                        #finnDrag svg{position:absolute;inset:0;margin:auto;width:100%;height:88%;}
                         /*添加进度条*/
                         #finnProgress{--rule: 1.7vmax; position:absolute;left:var(--rule);top:var(--rule);z-index:1000;
                         background:conic-gradient(transparent 100%,#cccccc57 0%);
