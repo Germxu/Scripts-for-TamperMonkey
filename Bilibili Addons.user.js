@@ -22,7 +22,7 @@
                         background:#ffffff5e;width:30%;height:30%;
                         transition:all 0.2s;cursor:se-resize;opacity:1;}
                         #finnDrag:hover{opacity:1}
-                        #finnDrag svg{position:absolute;inset:0;margin:auto;width:100%;height:88%;}
+                        #finnDrag svg{position:absolute;inset:0;margin:auto;width:100}
                         /*添加进度条*/
                         #finnProgress{--rule: 1.7vmax; position:absolute;left:var(--rule);top:var(--rule);z-index:1000;
                         background:conic-gradient(transparent 100%,#cccccc57 0%);
@@ -65,7 +65,12 @@
 
                 //添加全屏按钮
 
-                const fullBtn = `<label for="finnFor" id="finnDrag"></label>`
+                const fullBtn = `<label for="finnFor" id="finnDrag"><svg t="1613320728444" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                p-id="2022" width="100%" height="99%">
+                <path
+                    d="M237.1 294h557v435.7h-557zM774.5 128v41.3h136.7v164.9h48.1V128zM112.4 169.3h136.7V128H64.2v206.2h48.2zM911.2 854.3H774.5v41.3h184.8V689.4h-48.1zM112.4 689.4H64.2v206.2h184.9v-41.3H112.4z"
+                    p-id="2023" fill="#dbdbdb"></path>
+            </svg></label>`
                 //fullBtn.addEventListener("click", function (e) { console.log("fullBtn click 点击"), e.stopPropagation() })
                 fullwrap.insertAdjacentHTML("afterbegin", fullBtn);
 
