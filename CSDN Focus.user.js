@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         CSDN Focus
 // @description  💡: 页面不重绘不闪屏! CSDN无弹窗无广告无推荐阅读, 展开文章和评论, 保留搜索栏, 外链直达! | 受够了脚本注入导致的闪屏重绘页面吗, 试试不一样的感觉吧 😁
-// @version      0.8
+// @version      0.9
 // @author       Finn
 // @namespace    https://github.com/Germxu
 // @homepage     https://github.com/Germxu/Scripts-for-TamperMonkey
