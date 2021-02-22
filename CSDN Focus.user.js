@@ -61,4 +61,26 @@
         }, true);
     })
 
+    //外链直达, 以新页面打开
+    window.addEventListener("DOMContentLoaded", function () {
+        document.body.addEventListener('click', function (e) {
+            for (var el = e.target; el !== e.currentTarget; el = el.parentElement) {
+                if (el.tagName.toLowerCase() === 'a') {
+                    console.log(333, e.currentTarget)
+                    if (el.host.indexOf("csdn") === -1) {
+                        console.log(2, el)
+                        e.stopImmediatePropagation();
+                        window.open(el.href);
+                        console.log('r', r);
+
+                        // r.location.href = el.href;
+                        e.preventDefault();
+                    }
+                    return;
+                }
+            }
+        });
+    });
+
+
 })();
