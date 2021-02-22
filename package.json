@@ -1,0 +1,25 @@
+{
+  "name": "scripts-for-tampermonkey",
+  "version": "1.0.0",
+  "description": "本仓库是用于日常上网使用的油猴脚本, 支持网站和功能会逐渐丰富, 欢迎提交[意见建议](https://github.com/Germxu/Scripts-for-TamperMonkey/issues/new), 期待您的 star ^\\_^",
+  "main": "none",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Germxu/Scripts-for-TamperMonkey.git"
+  },
+  "keywords": [
+    "publish"
+  ],
+  "author": "Finn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Germxu/Scripts-for-TamperMonkey/issues"
+  },
+  "homepage": "https://github.com/Germxu/Scripts-for-TamperMonkey#readme",
+  "devDependencies": {
+    "webpack": "^5.23.0"
+  }
+}
