@@ -26,7 +26,7 @@
     'use strict';
     const hideChaos = `<style>
                         #csdn-toolbar .toolbar-advert,#csdn-toolbar .toolbar-container-left,#csdn-toolbar .toolbar-container-right,
-                        .toolbar-search-drop-menu.toolbar-search-half, ::-webkit-input-placeholder, #placeholder
+                        .toolbar-search-drop-menu.toolbar-search-half, ::-webkit-input-placeholder, #placeholder,
                         #blogColumnPayAdvert, .csdn-side-toolbar, #dmp_ad_58,
                          .login-mark, .blog-footer-bottom, .template-box,.leftPop,
                         #toolBarBox, .comment-edit-box.d-flex, #passportbox, .opt-box.text-center,
