@@ -12,6 +12,10 @@
 
 (function () {
     'use strict';
+    if(self.frameElement != null && (self.frameElement.tagName == "IFRAME" || self.frameElement.tagName == "iframe")){
+        console.log("iframe不执行操作");
+        return;
+    }
 
     const vi = document.querySelector("video");
     if (!vi) {
