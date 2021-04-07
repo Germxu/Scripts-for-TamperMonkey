@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         CSDN Focus
 // @description  💡: 页面不重绘不闪屏! CSDN, 脚本之家无弹窗无广告无推荐阅读, 展开文章和评论, 保留搜索栏, 外链直达! | 受够了脚本注入导致的闪屏重绘页面吗, 试试不一样的感觉吧 😁
-// @version      1.1.4.7
+// @version      1.1.4.8
 // @author       Finn
 // @namespace    https://github.com/Germxu
 // @homepage     https://github.com/Germxu/Scripts-for-TamperMonkey
@@ -27,7 +27,8 @@
 (function () {
     'use strict';
 
-    const csdn = `<style>
+    const csdn = 
+    `<style>
         #csdn-toolbar .toolbar-advert,#csdn-toolbar .toolbar-container-left,#csdn-toolbar .toolbar-container-right,
         .toolbar-search-drop-menu.toolbar-search-half, ::-webkit-input-placeholder, #placeholder,
         #blogColumnPayAdvert, .csdn-side-toolbar, #dmp_ad_58,#footerRightAds,
@@ -56,7 +57,7 @@
 		.blog_container_aside::-webkit-scrollbar-thumb{border-radius: 6px;background-color: #cecece;}
         .blog_container_aside:hover{left:0px!important;}
         .recommend-box.insert-baidu-box{height:79%;overflow:scroll;position: fixed;
-        background:#fff;box-sizing: content-box;transition:all 0.5s;box-shadow: 0 -3px 10px 0 rgba(0,0,0,.25);border:10px solid #fff;z-index: 1995;top: calc(100% - 7px);left:0;right:0;margin:auto; width: 1000px;}
+        background:#fff;box-sizing: content-box;transition:top 0.38s;box-shadow: 0 -3px 10px 0 rgba(0,0,0,.25);border:10px solid #fff;z-index: 1995;top: calc(100% - 7px);left:0;right:0;margin:auto; width: 1000px;}
         .recommend-box.insert-baidu-box:hover{top:29%}
         .recommend-box.insert-baidu-box::-webkit-scrollbar-thumb { background-color: rgba(153,154,170,0.3);}
         .recommend-box.insert-baidu-box::-webkit-scrollbar {width: 5px;height: 100px; }
