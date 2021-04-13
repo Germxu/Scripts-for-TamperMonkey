@@ -55,8 +55,9 @@
         .recommend-box.insert-baidu-box::-webkit-scrollbar {width: 5px;height: 100px; }
         .recommend-item-box{display:none!important;}
         .recommend-item-box.type_blog{display:block!important;}
-        aside.blog_container_aside:before{width:18px;position:fixed;top:58px;left:0;z-index:999;padding:8px 0px;background:#ff4d4d;text-align:center;color:#fff;content: " "attr(username) " ";writing-mode: tb-rl;font-size:14px;line-height: 1.4;transition:all 0.35s ease;}
-        aside.blog_container_aside:hover::before{width:308px;padding: 2px 0; writing-mode: rl-tb;}
+        aside.blog_container_aside:before{width:20px;animation:wd 1s ease-out forwards;position:fixed;top:58px;left:0;z-index:999;padding:8px 0px;background:#ff4d4d;text-align:center;color:#fff;content: " "attr(username) " ";writing-mode: tb-rl;font-size:14px;line-height: 1.5;transition:all 0.35s ease;}
+        @keyframes wd{from {left:-20px;}to {left:0;}}
+         aside.blog_container_aside:hover::before{width:308px;height:18px;padding: 2px 0; writing-mode: rl-tb;}
         .recommend-box.insert-baidu-box:before{position:fixed;bottom:40px;left:50%;margin-left:510px;padding:4px;background:#ff4d4d;color:#fff;content:"推荐阅读";font-size:13px}
     </style>
     <div id="FinnTop">
