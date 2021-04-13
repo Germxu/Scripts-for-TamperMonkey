@@ -94,15 +94,3 @@
     }
 
 })();
-
-/*
-*
-    var insertedNode = parentNode.insertBefore(newNode, referenceNode);
-    insertedNode 被插入节点(newNode)
-    parentNode 新插入节点的父节点
-    newNode 用于插入的节点
-    referenceNode newNode 将要插在这个节点之前
-    如果 referenceNode 为 null 则 newNode 将被插入到子节点的末尾。
-    ⚠️ referenceNode 引用节点不是可选参数——你必须显式传入一个 Node 或者 null。
-*
-*/
