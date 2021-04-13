@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         CSDN Focus
 // @description  💡: 页面不重绘不闪屏! CSDN, 脚本之家无弹窗无广告无推荐阅读, 展开文章和评论, 保留搜索栏, 外链直达! | 受够了脚本注入导致的闪屏重绘页面吗, 试试不一样的感觉吧 😁
-// @version      1.1.4.8
+// @version      1.2.4.13
 // @author       Finn
 // @namespace    https://github.com/Germxu
 // @homepage     https://github.com/Germxu/Scripts-for-TamperMonkey
@@ -12,26 +12,18 @@
 // @match        www.jb51.net/article/*
 // @grant        none
 // @license      MIT
+// @note         V1.2 优化:作者标签显示为作者名字, 竖排以减小显示遮挡
 // @note         V1.1 添加隐藏内容提示标签, 侧边栏和推荐阅读
 // @note         V1.0 添加脚本之家页面净化 jb51.net 净化
-// @note         V0.9 添加返回顶部按钮, 重新释放侧边栏和推荐阅读, 尽可能不影响阅读
-// @note         V0.8 使用原生API, 放弃GM_***
-// @note         V0.7 操作优化
-// @note         V0.6 添加外联直达, 去他妈的跳转提醒
-// @note         V0.5 保留搜索栏, 并优化搜索栏动作
-// @note         v0.4 隐藏大屏幕下的右侧边栏
-// @note         v0.3 展开全部评论和翻页键, 展开需要关注阅读文章
-// @note         v0.2 JS重置样式改为纯CSS注入,页面不再重绘, 所见所得
 // ==/UserScript==
 
 (function () {
     'use strict';
 
-    const csdn = 
-    `<style>
+    const csdn = `<style>
         #csdn-toolbar .toolbar-advert,#csdn-toolbar .toolbar-container-left,#csdn-toolbar .toolbar-container-right,
         .toolbar-search-drop-menu.toolbar-search-half, ::-webkit-input-placeholder, #placeholder,
-        #blogColumnPayAdvert, .csdn-side-toolbar, #dmp_ad_58,#footerRightAds,
+        #blogColumnPayAdvert, .csdn-side-toolbar, #dmp_ad_58,#footerRightAds,.csdn-shop-window-common,
         .login-mark, .blog-footer-bottom, .template-box,.leftPop,
         #toolBarBox, .comment-edit-box.d-flex, #passportbox, .opt-box.text-center,
         .hide-article-box.hide-article-pos.text-center, #rightAside, .hljs-button.signin
@@ -51,20 +43,20 @@
         main .comment-box{padding: 0;box-shadow: 0 0 10px rgba(0,0,0,0.05);margin:8px 0;}
         #FinnTop{width:36px;height:36px;position:fixed;left:50%;margin-left:520px;bottom:80px;z-index:999;cursor:pointer;background:#fff;border-radius:50%;box-shadow:0 0 20px #75757545;}
         #FinnTop svg{margin:4px;}
-        .blog_container_aside{height:calc(100% - 100px);overflow-y:auto;overflow-x:hidden;border:8px solid #fff;border-top-width:20px;background:#fff;box-sizing: content-box;position:fixed;top:initial!important;left:-315px!important;;transition:all 0.38s;box-shadow: 2px 0 10px 0 rgba(0,0,0,.15);z-index:99;}
+        .blog_container_aside{height:calc(100% - 100px);overflow-y:auto;overflow-x:hidden;border:solid #fff;border-width:20px 4px 0 4px;background:#fff;box-sizing: content-box;position:fixed;top:initial!important;left:-307px!important;;transition:all 0.35s;box-shadow: 2px 0 10px 0 rgba(0,0,0,.15);z-index:99;}
         .blog_container_aside::-webkit-scrollbar-track{-webkit-box-shadow: inset 0 0 15px rgba(0,0,0,0.13);background-color: #fefefe;}
 		.blog_container_aside::-webkit-scrollbar{width: 6px;height:6px;background-color: #eee;}
 		.blog_container_aside::-webkit-scrollbar-thumb{border-radius: 6px;background-color: #cecece;}
         .blog_container_aside:hover{left:0px!important;}
         .recommend-box.insert-baidu-box{height:79%;overflow:scroll;position: fixed;
-        background:#fff;box-sizing: content-box;transition:top 0.38s;box-shadow: 0 -3px 10px 0 rgba(0,0,0,.25);border:10px solid #fff;z-index: 1995;top: calc(100% - 7px);left:0;right:0;margin:auto; width: 1000px;}
+        background:#fff;box-sizing: content-box;transition:all 0.38s;box-shadow: 0 -3px 10px 0 rgba(0,0,0,.25);border:10px solid #fff;z-index: 1995;top: calc(100% - 7px);left:0;right:0;margin:auto; width: 1000px;}
         .recommend-box.insert-baidu-box:hover{top:29%}
         .recommend-box.insert-baidu-box::-webkit-scrollbar-thumb { background-color: rgba(153,154,170,0.3);}
         .recommend-box.insert-baidu-box::-webkit-scrollbar {width: 5px;height: 100px; }
         .recommend-item-box{display:none!important;}
         .recommend-item-box.type_blog{display:block!important;}
-        aside.blog_container_aside:before{position:fixed;top:58px;left:0;z-index:999;padding:4px 8px;background:#ff4d4d;text-align:center;color:#fff;content:"作者信息";font-size:13px;transition:all 1s ease;}
-        aside.blog_container_aside:hover::before{width:300px;}
+        aside.blog_container_aside:before{width:18px;position:fixed;top:58px;left:0;z-index:999;padding:8px 0px;background:#ff4d4d;text-align:center;color:#fff;content: " "attr(username) " ";writing-mode: tb-rl;font-size:14px;line-height: 1.4;transition:all 0.35s ease;}
+        aside.blog_container_aside:hover::before{width:308px;padding: 2px 0; writing-mode: rl-tb;}
         .recommend-box.insert-baidu-box:before{position:fixed;bottom:40px;left:50%;margin-left:510px;padding:4px;background:#ff4d4d;color:#fff;content:"推荐阅读";font-size:13px}
     </style>
     <div id="FinnTop">
@@ -87,6 +79,7 @@
         hideChaos = csdn;
         //外链直达, 以新页面打开
         window.addEventListener("DOMContentLoaded", function () {
+            document.querySelector(".blog_container_aside").setAttribute("username",uid.title);
             document.body.addEventListener('click', function (e) {
                 let ev = e.target;
                 if (ev.nodeName.toLocaleLowerCase() === 'a') {
