@@ -12,6 +12,8 @@
 // @match        www.jb51.net/article/*
 // @grant        none
 // @license      MIT
+// @compatible   chrome 54+
+// @compatible   firefox 49+
 // @note         V1.2 优化:作者标签显示为作者名字, 竖排以减小显示遮挡
 // @note         V1.1 添加隐藏内容提示标签, 侧边栏和推荐阅读
 // @note         V1.0 添加脚本之家页面净化 jb51.net 净化
@@ -55,7 +57,7 @@
         .recommend-box.insert-baidu-box::-webkit-scrollbar {width: 5px;height: 100px; }
         .recommend-item-box{display:none!important;}
         .recommend-item-box.type_blog{display:block!important;}
-        aside.blog_container_aside:before{width:20px;animation:wd 1s ease-out forwards;position:fixed;top:58px;left:0;z-index:999;padding:8px 0px;background:#ff4d4d;text-align:center;color:#fff;content: " "attr(username) " ";writing-mode: tb-rl;font-size:14px;line-height: 1.5;transition:all 0.35s ease;}
+        aside.blog_container_aside:before{width:20px;animation:wd 1s ease-in forwards;position:fixed;top:58px;left:0;z-index:999;padding:8px 0px;background:#ff4d4d;text-align:center;color:#fff;content: " "attr(username) " ";writing-mode: tb-rl;font-size:14px;line-height: 1.5;transition:all 0.35s ease;}
         @keyframes wd{from {left:-20px;}to {left:0;}}
          aside.blog_container_aside:hover::before{width:308px;height:18px;padding: 2px 0; writing-mode: rl-tb;}
         .recommend-box.insert-baidu-box:before{position:fixed;bottom:40px;left:50%;margin-left:510px;padding:4px;background:#ff4d4d;color:#fff;content:"推荐阅读";font-size:13px}
