@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         CSDN Focus
-// @description  💡: 页面不重绘不闪屏! CSDN,脚本之家无弹窗无广告无推荐阅读, 展开文章和评论, 保留搜索栏, 外链直达! | 受够了脚本注入导致的闪屏重绘页面吗, 试试不一样的感觉吧 😁
+// @description  💡:专注内容 支持 CSDN,脚本之家无弹窗无广告, 展开文章和评论, 任意复制, 保留搜索, 外链直达! | 受够了脚本注入导致的闪屏重绘页面吗, 试试不一样的感觉吧 😁
 // @version      1.2.4.14
 // @author       Finn
 // @namespace    https://github.com/Germxu
@@ -20,10 +20,10 @@
 // @note         V1.1 添加隐藏内容提示标签, 侧边栏和推荐阅读
 // @note         V1.0 添加脚本之家页面净化 jb51.net 净化
 // ==/UserScript==
- 
+
 (function () {
     'use strict';
- 
+
     const csdn = `<style>
         #csdn-toolbar .toolbar-advert,#csdn-toolbar .toolbar-container-left,#csdn-toolbar .toolbar-container-right,
         .toolbar-search-drop-menu.toolbar-search-half, ::-webkit-input-placeholder, #placeholder,
@@ -59,9 +59,9 @@
         .recommend-box.insert-baidu-box::-webkit-scrollbar {width: 5px;height: 100px; }
         .recommend-item-box{display:none!important;}
         .recommend-item-box.type_blog{display:block!important;}
-        aside.blog_container_aside:before{width:14px;animation:_l 1s ease-in forwards;position:fixed;top:58px;left:0;z-index:999;padding:5px 1px;background:#ff4d4d;text-align:center;color:#fff;content: " "attr(username) " ";writing-mode: tb-rl;font-size:12px;line-height: 1.4;transition:all 0.35s ease;}
+        aside.blog_container_aside:before{width:14px;animation:_l 1s ease-in forwards;position:fixed;top:48px;left:0;z-index:999;padding:5px 1px;background:#ff4d4d;text-align:center;color:#fff;content: attr(username);writing-mode: tb-rl;font-size:12px;line-height: 1.4;transition:all 0.35s ease;}
         @keyframes _l{from {left:-20px;}to {left:0;}}
-         aside.blog_container_aside:hover::before{width:308px;height:18px;padding: 4px 0; writing-mode: rl-tb;font-size:14px;}
+         aside.blog_container_aside:hover::before{width:308px;height:18px;padding: 4px 0; writing-mode: rl-tb;font-size:14px;top:58px}
         .recommend-box.insert-baidu-box:before{position:fixed;bottom:40px;left:50%;margin-left:510px;padding:4px;background:#ff4d4d;color:#fff;content:"推荐阅读";font-size:13px}
     </style>
     <div id="FinnTop">
@@ -84,7 +84,7 @@
         hideChaos = csdn;
         //外链直达, 以新页面打开
         window.addEventListener("DOMContentLoaded", function () {
-            document.querySelector(".blog_container_aside").setAttribute("username",uid.title);
+            document.querySelector(".blog_container_aside").setAttribute("username", window.uid ? uid.title : "作者信息");
             document.body.addEventListener('click', function (e) {
                 let ev = e.target;
                 if (ev.nodeName.toLocaleLowerCase() === 'a') {
@@ -98,10 +98,10 @@
             $("#FinnTop").click(function () {
                 $("body,html").animate({ scrollTop: 0 }, 300);
             });
- 
+
         })
     }
- 
+
     document.documentElement.insertAdjacentHTML('afterbegin', hideChaos);
- 
+
 })();
