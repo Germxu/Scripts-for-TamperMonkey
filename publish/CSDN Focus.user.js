@@ -25,6 +25,7 @@
     'use strict';
  
     const csdn = `<style>[darkMode]{filter:invert(1) hue-rotate(180deg)}[darkMode] img{filter: invert(1) hue-rotate(180deg);}
+        html{transition:color 300ms,background-color 300ms}
         #csdn-toolbar .toolbar-advert,#csdn-toolbar .toolbar-container-left,#csdn-toolbar .toolbar-container-right,
         .toolbar-search-drop-menu.toolbar-search-half, ::-webkit-input-placeholder, #placeholder,
         #blogColumnPayAdvert, .csdn-side-toolbar, #dmp_ad_58,#footerRightAds,.csdn-shop-window-common,
