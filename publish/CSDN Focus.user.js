@@ -30,11 +30,10 @@
     let dark = FinnData.dark;
     dark == 1 && document.documentElement.setAttribute("darkMode", true);
 
-    const csdn = `<style>[darkMode]{filter:invert(1) hue-rotate(180deg)}[darkMode] #darkBtn,[darkMode] img,[darkMode] code.hljs,
-        [darkMode] pre.prettyprint{filter: invert(1) hue-rotate(180deg);}
-        html * {transition:filter 0.7s}[darkMode] body{background:#ebebeb!important;transition:background 0.7s}
+    const csdn = `<style>[darkMode],[darkMode] #darkBtn,[darkMode] img,[darkMode] code.hljs,[darkMode] pre.prettyprint{filter: invert(1) hue-rotate(180deg);transition:all 0.5s}
+        [darkMode] body{background:#ebebeb!important;transition:background 0.7s}
         #darkBtn{position:fixed; top:8px;left:50px;width:32px;height:32px;z-index:9999;background:gold;cursor:pointer;border-radius: 50%;transition:all 0.5s}
-        [darkMode]  #darkBtn{background:transparent; box-shadow:-0.5em 0.3em 0 0 gold; left:60px;top:4px}
+        [darkMode] #darkBtn{background:transparent; box-shadow:-0.5em 0.3em 0 0 gold; left:60px;top:4px}
         #darkBtn:after{content:"打开夜间模式";width:100px;position:absolute;right:-120px;top:4px;font-size:14px;font-weight:600;transition:all 0.5s;display:none}
         [darkMode] #darkBtn:after{content:"关闭夜间模式";right:-110px;top:8px;filter: invert(1) hue-rotate(180deg);font-weight:600;}#darkBtn:hover:after{display:block}
         #csdn-toolbar .toolbar-advert,#csdn-toolbar .toolbar-container-left,#csdn-toolbar .toolbar-container-right,
@@ -79,7 +78,7 @@
      <div id="darkBtn"></div>
     <div id="FinnTop">TOP</div>`;
     const jb51 = `<style>
-                    #main .main-right,.pt10,.lbd,.xgcomm,#header,.lbd_bot,#ewm,.subnav,.art_xg,.tags,#comments{display:none!important;}
+                    #main .main-right,#topbar,#footer,.pt10,.lbd,.xgcomm,#header,.lbd_bot,#ewm,.subnav,.art_xg,.tags,#comments{display:none!important;}
                     body #main .main-left{padding:0;width:unset;float:none}
                     body #article{padding: 15px 20px 20px;box-shadow: 0 0 30px rgb(0 0 0 / 25%)}
                     #ewm + p{font-weight:bold;text-align:center;margin:20px;font-size:24px;}
