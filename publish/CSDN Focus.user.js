@@ -40,7 +40,7 @@
             Reflect.set(target,key,newVal)
         },
         has(target,key){
-            Reflect.target
+            Reflect.has(target,key)
         }
     })
 
