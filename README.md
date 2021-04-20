@@ -2,14 +2,14 @@
 
 ## 油猴脚本 仓库说明
 
-本仓库是用于日常上网使用的油猴脚本, 支持网站和功能会逐渐丰富, 欢迎提交[意见建议](https://github.com/Germxu/Scripts-for-TamperMonkey/issues/new), 期待您的 star ^\_^
+本仓库是用于日常上网使用的公开油猴脚本, 支持网站和功能会逐渐丰富, 欢迎提交[意见建议](https://github.com/Germxu/Scripts-for-TamperMonkey/issues/new), 期待您的 star ^\_^
 
 ## 下载与安装
 
 | 脚本       |                                 地址                                 |                              地址                              |
 | :--------- | :------------------------------------------------------------------: | :------------------------------------------------------------: |
 | CSDN Focus | [greasyfork](https://greasyfork.org/zh-CN/scripts/420352-csdn-focus) | [openuserjs](https://openuserjs.org/scripts/Germxu/CSDN_Focus) |
-
+| 脚本列表排序 |Greasyfork专用插件| [greasyfork](https://greasyfork.org/scripts/425068-sort-number-for-greasy-fork-scripts)|
 
 ## CSDN Focus
 
@@ -18,6 +18,8 @@
 #### V 1.1
 功能优化: 添加隐藏内容提示标签, 侧边栏和推荐阅读
 :( 由于CSS限制, 效果和实现方式略显生硬
+<details>
+
 #### v 1.0
 网站支持: 添加脚本之家页面净化 jb51.net 净化
 #### v 0.9.7
@@ -27,8 +29,7 @@
 
 #### v 0.8
 功能优化: 使用原生API, 放弃GM_***, 提升挂载时机
-
-<details>
+ 
 <summary><strong>more</strong></summary>
 
 #### v 0.7
@@ -54,11 +55,6 @@ Bugfix: 大屏幕右侧边栏隐藏, 大小屏幕都居中显示
 #### v 0.1
 
 只显示页面文章和评论, 其他全部隐藏
-
-**截图**
-![头部](images/design_2.png) 
-
-![评论](images/comment.png)
 
 </details>
 
