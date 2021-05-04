@@ -259,13 +259,13 @@
         position: fixed;
         top: 58px;
         left: 0;
-        z-index: 999;
+        /* z-index: 999; */
         padding: 5px 1px;
         background: #ff4d4d;
         text-align: center;
         color: #fff;
-        content: " "attr(username) " ";
-        writing-mode: tb-rl;
+        content: attr(usr);
+        /* writing-mode: tb-rl; */
         font-size: 12px;
         line-height: 1.4;
         transition: all 0.35s ease;
@@ -290,6 +290,7 @@
     }
 
     .recommend-box.insert-baidu-box:before {
+        content: "推荐阅读";
         position: fixed;
         bottom: 40px;
         left: 50%;
@@ -297,7 +298,6 @@
         padding: 4px;
         background: #ff4d4d;
         color: #fff;
-        content: "推荐阅读";
         font-size: 13px
     }
 </style>

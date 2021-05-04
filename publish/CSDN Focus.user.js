@@ -58,7 +58,7 @@
     if (location.host === "www.jb51.net") { hideChaos = jb51; } else {
         hideChaos = csdn;
         window.addEventListener("DOMContentLoaded", function () {
-            document.querySelector(".blog_container_aside").setAttribute("username", uid.title);
+            document.querySelector(".blog_container_aside").setAttribute("usr", nickName);
             document.body.addEventListener('click', function (e) {
                 let ev = e.target;
                 if (ev.nodeName.toLocaleLowerCase() === 'a') {
