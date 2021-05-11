@@ -15,7 +15,6 @@
 // @grant        GM_getValue
 // @license      MIT
 // @compatible   chrome 54+
-//
 // @note         V1.6 重要更新: 修复了一直以来可能出现的运行不稳定和后台加载脚本失败的问题
 // @note         V1.5 重要更新: 添加黑暗模式, 一键切换, 优化精简大量静态代码,修复隐性Bug
 // @note         V1.2 优化:作者标签显示为作者名字, 竖排以减小显示遮挡, 优化动作
@@ -57,19 +56,13 @@
         })
     }
     if (!h) {
-        let OB = new MutationObserver( mutations => {
-            console.log(mutations);
-            ins()
-        })
+        let OB = new MutationObserver(ins);
         OB.observe(document, { childList: true })
     } else {
         ins()
     }
-    //h?ins():(OB=new MutationObserver(ins()),OB.observe(document,{childList:!0}));
-
     function ins() {
         FinnData.dark && h.setAttribute("darkMode", true);
         document.documentElement.insertAdjacentHTML('afterbegin', _Ds);
     }
-
 })();
