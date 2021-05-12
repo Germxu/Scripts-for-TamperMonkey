@@ -28,16 +28,16 @@
     let FinnData = new Proxy(GM_getValue('FinnData', {}), {
         set(target, key, val) {
             key === "dark" && val ? h.setAttribute("darkMode", true) : h.removeAttribute("darkMode");
-            Reflect.set(target, key, val);
+            const B = Reflect.set(target, key, val);
             GM_setValue('FinnData', FinnData);
-            return true;
+            return B;
         }
     })
     if (location.host === "www.jb51.net") { _Ds = jb51; } else {
         _Ds = csdn;
-        window.addEventListener("DOMContentLoaded", function () {
+        window.addEventListener("DOMContentLoaded", () => {
             document.querySelector(".blog_container_aside").setAttribute("username", username);
-            document.body.addEventListener('click', function (e) {
+            document.body.addEventListener('click', e => {
                 let ev = e.target;
                 if (ev.nodeName.toLocaleLowerCase() === 'a') {
                     if (ev.host.indexOf("csdn") === -1) {
@@ -47,21 +47,19 @@
                     }
                 }
             }, true);
-            $("#FinnTop").click(function () {
-                $("body,html").animate({ scrollTop: 0 }, 300);
-            });
-            $("#darkBtn").click(function () { FinnData.dark ? FinnData.dark = !1 : FinnData.dark = !0; })
+            $("#darkBtn").click(() => { FinnData.dark = !FinnData.dark })
+            $("#FinnTop").click(() => { $("body,html").animate({ scrollTop: 0 }, 300) });
         })
-    }
-    if (!h) {
-        let OB = new MutationObserver(ins);
-        OB.observe(document, { childList: true })
-    } else {
-        ins()
     }
     function ins() {
         h = document.documentElement;
         h.insertAdjacentHTML('afterbegin', _Ds);
         FinnData.dark && h.setAttribute("darkMode", true);
     }
+    if (!h) {
+        let OB = new MutationObserver(ins);
+        OB.observe(document, { childList: true })
+    } else {
+        ins()
+     }
 })();
