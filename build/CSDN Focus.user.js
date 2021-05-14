@@ -49,10 +49,33 @@
             }, true);
             $("#darkBtn").click(() => { FinnData.dark = !FinnData.dark })
             $("#FinnTop").click(() => { $("body,html").animate({ scrollTop: 0 }, 300) });
+            let resize = mainBox;
+            resize.addEventListener("mousedown", e => {
+                var startX = e.clientX;
+                e.stopPropagation();
+                document.onmousemove = function (e) {
+                    // console.log("拖动", e);
 
-            mainBox.addEventListener("mousedown", e => {
-                console.log(e);
-                e.stopPropagation()
+                    var endX = e.clientX;
+                    var moveLen = endX - startX;
+                    // var maxT = box.clientWidth - resize.offsetWidth;
+                    // if (moveLen < 59) moveLen = 59;
+                    // if (moveLen > maxT - 500) moveLen = maxT - 500;
+
+                    console.log(moveLen, resize.offsetWidth,resize.style.width);
+
+                    resize.setAttribute("style", "width:" + (resize.offsetWidth + moveLen/2) + "px !important");
+                }
+
+                document.onmouseup = function (evt) {
+                    evt.stopPropagation()
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                    resize.releaseCapture && resize.releaseCapture();
+                }
+                resize.setCapture && resize.setCapture();
+                return false;
+                //blog.csdn.net/qq_42497250/article/details/96017804
             }, true)
         })
     }
