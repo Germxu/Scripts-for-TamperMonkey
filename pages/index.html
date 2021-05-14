@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.0.11/vue.global.js"></script> -->
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/Chart.js/3.1.0/chart.js"></script> -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.1.0/echarts.min.js"></script>
+    <title>CSDN-Focus Popularity</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            text-align: center;
+            font: 1em sans-serif;
+            width: 100%;
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+
+        td,
+        th {
+            border: 1px solid #ccc;
+            line-height: 2;
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
+    <canvas id="eChartx" width="1000" height="450"></canvas>
+
+    <table id="table">
+        <thead>
+            <tr>
+                <th width=40%>日期</th>
+                <th width=30%>安装</th>
+                <th>更新</th>
+            </tr>
+        </thead>
+    </table>
+</body>
+
+</html>
+<script>
+    function ajaxPost(url, callback) {
+        var xhr = new XMLHttpRequest()
+        xhr.open('get', url, true)
+        xhr.send()
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+                    callback(xhr.response)
+                } else {
+                    callback()
+                }
+            }
+        }
+    }
+
+    ajaxPost('https://greasyfork.org/scripts/420352/stats.json', (res) => {
+        //    console.log( res instanceof Array,JSON.parse(res));
+        const data = JSON.parse(res);
+        let dom = ``;
+
+        // console.log(Object.values(data));
+        // console.log(Object.keys(data));
+        // console.log(data);
+
+        let lastData = Object.entries(data).slice(-20);
+        // console.log(Object.entries(data));
+
+        renderEct(Object.entries(data));
+
+        for (const iterator in data) {
+            // console.log(data[iterator]);
+            dom = `<tr>
+                        <td>${iterator}</td>
+                        <td>${data[iterator].installs}</td>
+                        <td>${data[iterator].update_checks}</td>
+                    </tr>`+ dom
+        }
+        table.insertAdjacentHTML('beforeend', dom);
+    })
+
+    // const config = {
+    //     type: 'line',
+    //     data,
+    //     options: {}
+    // };
+    // var myChart = new Chart(
+    //     myChart, config
+    // );
+
+
+
+    // console.log(eChartx);
+
+    function renderEct(data) {
+        let dt = [], ins = [], udp = [];
+        for (const i of data) {
+            // console.log(i);
+            dt.push(i[0])
+            ins.push(i[1].installs)
+            udp.push(i[1].update_checks)
+        }
+        // console.log(dt, ins, udp);
+
+
+        // 基于准备好的dom，初始化echarts实例
+        var ECharts = echarts.init(eChartx);
+
+        // 指定图表的配置项和数据
+        var option = {
+
+            title: {
+                // text: 'CSDN-Focus Popularity'
+            },
+            // 
+            tooltip: {
+                trigger: 'axis',
+                showContent: true,
+                triggerOn: "mousemove",
+                /* axisPointer: {
+                    type: 'cross',
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
+                } */
+            },
+            legend: {
+                data: ['安装量', "检查更新"]
+            },
+            xAxis: {
+                data: dt
+            },
+            yAxis: {
+                left: 23
+            },
+            dataZoom: [
+                {
+                    type: 'slider',
+                    start: 1,
+                    end: 35
+                }
+            ],
+            series: [{
+                name: '安装量',
+                type: 'line',
+                smooth: true,
+                data: ins,
+            }, {
+                name: '检查更新',
+                smooth: true,
+                type: 'line',
+                data: udp
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        ECharts.setOption(option);
+
+        /* window.onresize = function () {
+            ECharts.resize();
+        } */
+    }
+</script>
