@@ -64,7 +64,7 @@
 
                     console.log(moveLen, resize.offsetWidth,resize.style.width);
 
-                    resize.setAttribute("style", "width:" + (resize.offsetWidth + moveLen/2) + "px !important");
+                    resize.setAttribute("style", "width:" + (resize.offsetWidth + moveLen - 40) + "px !important");
                 }
 
                 document.onmouseup = function (evt) {
