@@ -51,6 +51,7 @@
             $("#FinnTop").click(() => { $("body,html").animate({ scrollTop: 0 }, 300) });
 
             const varWidth = getComputedStyle(document.documentElement).getPropertyValue("--finn-width");
+
             console.log(varWidth);
 
             let resize = mainBox;
@@ -59,7 +60,7 @@
 
                 var startX = e.clientX;
                 e.stopPropagation();
-                
+
                 document.onmousemove = function (e) {
                     // console.log("拖动", e);
 
@@ -71,7 +72,9 @@
 
                     console.log(moveLen, resize.offsetWidth, resize.style.width);
 
-                    resize.setAttribute("style", "width:" + (resize.offsetWidth + moveLen) + "px !important");
+                    document.querySelector('html').style.setProperty('--finn-width', (resize.offsetWidth + moveLen) + "px");
+
+                   // resize.setAttribute("style", "width:" + (resize.offsetWidth + moveLen) + "px !important");
                 }
 
                 document.onmouseup = function (evt) {
