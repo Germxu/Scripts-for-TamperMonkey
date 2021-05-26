@@ -49,6 +49,10 @@
             }, true);
             $("#darkBtn").click(() => { FinnData.dark = !FinnData.dark })
             $("#FinnTop").click(() => { $("body,html").animate({ scrollTop: 0 }, 300) });
+
+            const varWidth = getComputedStyle(document.documentElement).getPropertyValue("--finn-width");
+            console.log(varWidth);
+
             let resize = mainBox;
             resize.addEventListener("mousedown", e => {
                 var startX = e.clientX;
@@ -62,7 +66,7 @@
                     // if (moveLen < 59) moveLen = 59;
                     // if (moveLen > maxT - 500) moveLen = maxT - 500;
 
-                    console.log(moveLen, resize.offsetWidth,resize.style.width);
+                    console.log(moveLen, resize.offsetWidth, resize.style.width);
 
                     resize.setAttribute("style", "width:" + (resize.offsetWidth + moveLen - 40) + "px !important");
                 }
