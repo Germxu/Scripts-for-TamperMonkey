@@ -70,7 +70,7 @@
                     let l = offsetWidth + moveLen - 40;
                     l = l < 888 ? 888 : l > maxSize ? maxSize : l;
                     FinnData.finnWidth = l;
-                    document.querySelector('html').style.setProperty('--finn-width', l + "px");
+                    document.documentElement.style.setProperty('--finn-width', l + "px");
                 }
                 document.onmouseup = e => {
                     resize.style.userSelect = "auto";
