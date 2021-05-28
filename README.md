@@ -1,10 +1,13 @@
 # Scripts-for-TamperMonkey
 
-## 油猴脚本 仓库说明
+## 油猴脚本 仓库说明 (Tampermonkey Scripts
 
 本仓库是用于日常上网使用的公开油猴脚本, 支持网站和功能会逐渐丰富, 欢迎提交[意见建议](https://github.com/Germxu/Scripts-for-TamperMonkey/issues/new), 期待您的 star ^\_^
-This Repo was used for some 
+
+This Repo was used for net surfing, more and more scripts will be taken, you can take an issue if something doesn't goes well, and I'm looking forward to your **star**  ^\_^
+
 ## Download & Install
+
 
 | Scripts       |                       greasyfork                   |                 openuserjs                       |
 | :---------: | :------------------------------------------------------------------: | :------------------------------------------------------------: |
