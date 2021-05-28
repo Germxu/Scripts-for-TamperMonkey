@@ -9,58 +9,8 @@
 | 脚本       |                                 地址                                 |                              地址                              |
 | :--------- | :------------------------------------------------------------------: | :------------------------------------------------------------: |
 | CSDN Focus | [greasyfork](https://greasyfork.org/zh-CN/scripts/420352-csdn-focus) | [openuserjs](https://openuserjs.org/scripts/Germxu/CSDN_Focus) |
-| 脚本列表排序 |Greasyfork专用插件| [greasyfork](https://greasyfork.org/scripts/425068-sort-number-for-greasy-fork-scripts)|
-
-## CSDN Focus
-
-#### V 1.2
-功能优化: 作者标签显示为作者名字, 竖排以减小显示遮挡, 优化动作
-#### V 1.1
-功能优化: 添加隐藏内容提示标签, 侧边栏和推荐阅读
-:( 由于CSS限制, 效果和实现方式略显生硬
-<details>
-
-#### v 1.0
-网站支持: 添加脚本之家页面净化 jb51.net 净化
-#### v 0.9.7
-功能优化: 重新展示推荐阅读和左侧边栏, 尽可能不影响阅读,此版本可能放弃
-#### v 0.9
-功能优化: 返回顶部按钮重新添加, 替换原页面返回顶部过于漫长的动作
-
-#### v 0.8
-功能优化: 使用原生API, 放弃GM_***, 提升挂载时机
- 
-<summary><strong>more</strong></summary>
-
-#### v 0.7
-功能优化: 跳转优化
-
-#### v 0.6
-功能优化: 添加外链直达, 干掉跳转提醒
-
-
-#### v 0.5
-功能优化: 显示顶部搜索栏,优化过渡显示
-
-#### v 0.4
-Bugfix: 大屏幕右侧边栏隐藏, 大小屏幕都居中显示
-
-#### v 0.3
-展开全部评论和评论翻页, 隐藏登录窗
-
-#### v 0.2
-
-由于通过 js 查找节点注入样式的时间节点必须靠后, 势必导致页面的重绘, 此版本将 js 注入改为 `GM_addStyle` API 的纯 css 注入, 代码更简洁, 不影响页面加载, 甚至比原页面更快显示最终状态
-
-#### v 0.1
-
-只显示页面文章和评论, 其他全部隐藏
-
-</details>
-
-
-&emsp;  
-&emsp;  
+| 脚本列表排序|[greasyfork](https://greasyfork.org/scripts/425068-sort-number-for-greasy-fork-scripts)|----|
+|查看密码|[greasyfork](https://greasyfork.org/zh-CN/scripts/426577-show-password-by-double-click)|----|
 
 ## 后话:
 
