@@ -18,16 +18,6 @@ This Repo was used for net surfing, more and more scripts will be taken, you can
 &nbsp;
 
 &nbsp;
-&nbsp;
-
-&nbsp;
-
-&nbsp;
-&nbsp;
-
-&nbsp;
-
-&nbsp;
 
 &nbsp;
 -----
