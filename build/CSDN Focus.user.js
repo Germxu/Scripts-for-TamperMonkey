@@ -67,7 +67,7 @@
                 document.onmousemove = e => {
                     let endX = e.clientX;
                     var moveLen = (startX / maxSize < 0.5) ? startX - endX : endX - startX;
-                    let l = offsetWidth + moveLen - 40;
+                    let l = offsetWidth + moveLen*2 - 40;
                     l = l < 888 ? 888 : l > maxSize ? maxSize : l;
                     FinnData.finnWidth = l;
                     document.documentElement.style.setProperty('--finn-width', l + "px");
