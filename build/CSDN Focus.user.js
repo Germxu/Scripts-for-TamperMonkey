@@ -30,7 +30,7 @@
     let h = document.documentElement, _Ds;
     let FinnData = new Proxy(GM_getValue('FinnData', {}), {
         set(target, key, val) {
-            if(key === "dark"){
+            if (key === "dark") {
                 val ? h.setAttribute("darkMode", true) : h.removeAttribute("darkMode");
             }
             const B = Reflect.set(target, key, val);
@@ -57,7 +57,7 @@
 
             let resize = mainBox;
             resize.addEventListener("mousedown", e => {
-               if (e.target !== mainBox) return;
+                if (e.target !== mainBox) return;
                 let startX = e.clientX,
                     offsetWidth = resize.offsetWidth;
                 const maxSize = window.innerWidth * 0.8;
@@ -67,12 +67,12 @@
                 document.onmousemove = e => {
                     let endX = e.clientX;
                     let moveLen = (startX / maxSize < 0.5) ? startX - endX : endX - startX;
-                    let l = offsetWidth + moveLen*2 - 40;
+                    let l = offsetWidth + moveLen * 2 - 40;
                     l = l < 888 ? 888 : l > maxSize ? maxSize : l;
                     FinnData.finnWidth = l;
                     h.style.setProperty('--finn-width', l + "px");
                 }
-                document.onmouseup = e => {
+                document.onmouseup = ()=> {
                     resize.style.userSelect = "auto";
                     document.onmousemove = null;
                     document.onmouseup = null;
