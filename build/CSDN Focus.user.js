@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         CSDN Focus
 // @description  🌚 黑暗模式上线, 一键变天 | CSDN, 脚本之家 无弹窗无广告无任何干扰, 自动展开文章和评论, 外链直达! 隐藏属性等你发现, 不试一下? 😃
-// @version      1.8.8
+// @version      1.8.9
 // @author       Finn
 // @namespace    https://github.com/Germxu
 // @homepage     https://github.com/Germxu/Scripts-for-TamperMonkey
@@ -16,7 +16,7 @@
 // @license      MIT
 // @compatible   chrome 54+
 //
-// @note         V1.8 Bugfix: 修复了尺寸调整时黑暗模式退出的问题
+// @note         V1.8 Bugfix: 修复了尺寸调整时黑暗模式退出的问题以及不跟手问题
 // @note         V1.7 重要更新: 支持拉伸调节内容宽度, 尺寸限定: 888 ~ 80%
 // @note         V1.6 重要更新: 修复了一直以来可能出现的运行不成功和后台加载脚本失败的问题
 // @note         V1.5 重要更新: 添加黑暗模式, 一键切换, 优化精简大量静态代码,修复隐性Bug
@@ -57,29 +57,26 @@
 
             let resize = mainBox;
             resize.addEventListener("mousedown", e => {
+               if (e.target !== mainBox) return;
                 let startX = e.clientX,
                     offsetWidth = resize.offsetWidth;
                 const maxSize = window.innerWidth * 0.8;
-                if (e.target !== mainBox) return;
                 resize.style.userSelect = "none";
                 e.stopPropagation();
 
                 document.onmousemove = e => {
                     let endX = e.clientX;
-                    var moveLen = (startX / maxSize < 0.5) ? startX - endX : endX - startX;
+                    let moveLen = (startX / maxSize < 0.5) ? startX - endX : endX - startX;
                     let l = offsetWidth + moveLen*2 - 40;
                     l = l < 888 ? 888 : l > maxSize ? maxSize : l;
                     FinnData.finnWidth = l;
-                    document.documentElement.style.setProperty('--finn-width', l + "px");
+                    h.style.setProperty('--finn-width', l + "px");
                 }
                 document.onmouseup = e => {
                     resize.style.userSelect = "auto";
-                    e.stopPropagation();
                     document.onmousemove = null;
                     document.onmouseup = null;
-                    resize.releaseCapture && resize.releaseCapture();
                 }
-                resize.setCapture && resize.setCapture();
             }, true)
         })
     }
