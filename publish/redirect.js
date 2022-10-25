@@ -23,13 +23,15 @@
 
 (function () {
   'use strict';
-  const maybeKeys = ['url', 'to', 'u', 'link', 'links', 'redirect', 'target', 't'].join('|')
+  const maybeKeys = [ 'url', 'to', 'u', 'link', 'links', 'redirect', 'target', 't' ].join('|')
   const reg = new RegExp(`^https?://(${maybeKeys}).+\?(${maybeKeys})=(.*?)$`)
   const url = location.href
   if (reg.test(url)) {
-    const redirectkey = url.match(reg)[2]
+    const redirectkey = url.match(reg)[ 2 ]
     const redirectValue = new URLSearchParams(location.search).get(redirectkey)
     // console.log("target: ", redirectkey, redirectValue)
-    location.href = redirectValue
+    if (redirectValue && redirectValue.startsWith('http')) {
+      location.href = redirectValue
+    }
   }
 })();
