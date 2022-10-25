@@ -11,6 +11,7 @@
 // @match        http://*/*
 // @match        https://*/*
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+// @run-at       document-start
 // @grant        none
 // @license      MIT
 // ==/UserScript==
@@ -19,14 +20,19 @@
 
 (function () {
   'use strict';
-  const maybeKeys = [ 'url', 'to', 'u', 'link', 'links', 'redirect', 'target', 't' ].join('|')
-  const reg = new RegExp(`^https?://(${maybeKeys}).+\?(${maybeKeys})=(.*?)$`)
+  // redirect url patterns list
+  const maybeKeys = [ 'url', 'jump', 'to', 'u', 'link', 'links', 'redirect', 'target', 't' ].join('|')
+  const reg = new RegExp(`^https?://(${maybeKeys}).+[?&](${maybeKeys})=.+$`)
   const url = location.href
+  console.log(reg)
+
   if (reg.test(url)) {
     const redirectkey = url.match(reg)[ 2 ]
     const redirectValue = new URLSearchParams(location.search).get(redirectkey)
-    // console.log("target: ", redirectkey, redirectValue)
-    if (redirectValue && redirectValue.startsWith('http')) {
+
+    // check if the target is a url
+    if (/^https?:\/\//.test(redirectValue)) {
+      // console.log("redirect to: ", redirectValue)
       location.href = redirectValue
     }
   }
