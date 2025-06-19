@@ -12,7 +12,7 @@
     'use strict';
 
     // Your code here...
-    const color=['#1e88e5','#00695c','#e91e63','#26a69a','#607d8b','##afb42b','#ec407a','#cddc39','#ff8a65','#283593'];
+    const color=['#1e88e5','#00695c','#e91e63','#26a69a','#607d8b','#afb42b','#ec407a','#cddc39','#ff8a65','#283593'];
     let arr =[], total=0;
     const td = document.querySelectorAll(".table.table-md td:nth-child(2)")
     document.querySelector("table.table-striped.table-md").style.cssText ="text-align:center;color:#fff;";
